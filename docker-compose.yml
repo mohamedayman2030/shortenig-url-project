@@ -1,0 +1,18 @@
+version: '3.8'
+
+
+services:
+   app:
+      build: .
+      ports: 
+       - "3000:3000"
+      env_file: 
+       - config.env
+      depends_on:
+       - redis
+
+   redis:
+     image: redis
+     container_name: url_shortening_redis
+     ports:
+      - 6379:6379
